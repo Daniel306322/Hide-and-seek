@@ -20,10 +20,10 @@ public class EnemyAI : MonoBehaviour
     Transform objective;
     Transform objective1;
     Transform objective2;
-    Transform door;
+  /*  Transform door;*/
     public GameObject Objective;
     public GameObject closesthiding = null;
-    public GameObject closestdoor = null;
+  /*  public GameObject closestdoor = null; */
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
         objective2 = PlayerManager.instance.Objective2.transform; 
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
-        door = PlayerManager.instance.Door.transform;
+      /*  door = PlayerManager.instance.Door.transform; */
     }
 
     void Update()
@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
         float objdistance = Vector3.Distance(objective.position, transform.position);
         float objdistance1 = Vector3.Distance(objective1.position, transform.position);
         float objdistance2 = Vector3.Distance(objective2.position, transform.position);
-        float doordistance = Vector3.Distance(closestdoor.transform.position, transform.position); 
+       /* float doordistance = Vector3.Distance(closestdoor.transform.position, transform.position); */
 
         if (playerdistance <= lookRadius)
         {
@@ -78,13 +78,13 @@ public class EnemyAI : MonoBehaviour
             objectiveclose2 = true;
         }
 
-        if (doordistance <= doorRadius)
+      /*  if (doordistance <= doorRadius)
           {
               if (closedoors == true)
               {
                   DoorClose();
-              }
-          } 
+              } 
+          } */
         if (objdistance > objRadius)
         {
             Patrol();
@@ -143,7 +143,7 @@ public class EnemyAI : MonoBehaviour
         return closesthiding;
     } 
 
-    public GameObject FindClosestDoor()
+  /*  public GameObject FindClosestDoor()
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("DoorTrigger");
@@ -160,7 +160,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
         return closestdoor;
-    } 
+    }  */
 
     void Patrol()
     {
@@ -243,10 +243,10 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void DoorClose()
+  /*  void DoorClose()
         {
             closestdoor.GetComponent<Animator>().SetTrigger("Trigger Door");
-        }
+        } */
 
         #region drawlines
         void OnDrawGizmosSelected()
@@ -254,7 +254,7 @@ public class EnemyAI : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, lookRadius);
             Gizmos.DrawWireSphere(transform.position, objRadius);
-            Gizmos.DrawWireSphere(transform.position, doorRadius);
+          /*  Gizmos.DrawWireSphere(transform.position, doorRadius); */
         }
         #endregion
     }
