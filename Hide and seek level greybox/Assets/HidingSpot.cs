@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class HidingSpot : MonoBehaviour
 {
-    public bool Occupied = false;
-    // Start is called before the first frame update
+    public GameObject HidingSpotFoundprefab;
+    public Transform Self;
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider coll)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (coll.gameObject.tag == "Enemy")
         {
-            if (Occupied == false)
-            {
-                Occupied = true;
-            }
+            StartCoroutine(Hiding());
+        }
+
+        IEnumerator Hiding()
+        {
+            Destroy(coll.gameObject);
+            Instantiate(HidingSpotFoundprefab, Self.transform.position, Self.transform.rotation);
+            yield return new WaitForSeconds(1f);
+            Destroy(gameObject);
+            yield return new WaitForSeconds(1f);
         }
     }
-
-
 }
