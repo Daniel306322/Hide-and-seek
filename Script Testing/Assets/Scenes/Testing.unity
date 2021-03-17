@@ -3955,7 +3955,6 @@ MonoBehaviour:
   objectiveclose2: 0
   Objective: {fileID: 0}
   closesthiding: {fileID: 0}
-  closestdoor: {fileID: 0}
 --- !u!195 &1464235704
 NavMeshAgent:
   m_ObjectHideFlags: 0

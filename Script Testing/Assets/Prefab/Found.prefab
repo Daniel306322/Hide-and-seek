@@ -111,3 +111,4 @@ MonoBehaviour:
   HidingSpotprefab: {fileID: 7270735108876038300, guid: e0ad807ab4e17f8498d58e83f2da8ba0,
     type: 3}
   Self: {fileID: 6668220846184477685}
+  playergoneRadius: 50
